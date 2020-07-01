@@ -26,7 +26,12 @@ public class Bazooka : Attacker
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift))
+        if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance) // Test aşamasında, tamamlandığı zaman Unit sınıfı içerisine taşınarak "isSelected" koşulu ile birlikte çalışacak.
+        {
+            anim.SetBool("isMoving", false);
+        }
+
+        if (Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftShift)) // Test aşamasında, tamamlandığı zaman Unit sınıfı içerisine taşınarak "isSelected" koşulu ile birlikte çalışacak.
         {
             anim.SetBool("isMoving",true);
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
