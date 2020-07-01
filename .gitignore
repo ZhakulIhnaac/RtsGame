@@ -4,6 +4,4 @@
 .vs/
 obj/
 bin/
-aspnet-core/src/AYCCorporate.Web.Host/App_Data/Logs/
-aspnet-core/src/AYCCorporate.Web.Mvc/App_Data/Logs/
-aspnet-core/src/AYCCorporate.Migrator/Logs/Logs.txt
+
