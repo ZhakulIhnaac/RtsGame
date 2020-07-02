@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProductionBuilding : Playable
 {
 
-    protected List<Unit> productables;
+    [SerializeField] protected List<Unit> productables;
     protected List<Unit> productionList;
     protected int productionLimit;
     protected Waypoint waypoint;
@@ -45,6 +45,9 @@ public class ProductionBuilding : Playable
     // Update is called once per frame
     void Update()
     {
+        if (productionList.Count > 0)
+        {
 
+        }
     }
 }

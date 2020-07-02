@@ -3,8 +3,7 @@ using UnityEngine.AI;
 
 public class Bazooka : Attacker
 {
-    protected NavMeshAgent navMeshAgent;
-    protected RaycastHit hitInfo = new RaycastHit();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,22 +22,4 @@ public class Bazooka : Attacker
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance) // Test aşamasında, tamamlandığı zaman Unit sınıfı içerisine taşınarak "isSelected" koşulu ile birlikte çalışacak.
-        {
-            anim.SetBool("isMoving", false);
-        }
-
-        if (Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftShift)) // Test aşamasında, tamamlandığı zaman Unit sınıfı içerisine taşınarak "isSelected" koşulu ile birlikte çalışacak.
-        {
-            anim.SetBool("isMoving",true);
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
-            {
-                navMeshAgent.destination = hitInfo.point;
-            }
-        }
-    }
 }

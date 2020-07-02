@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Unit : Playable
 {
     public int populationCost;
     public List<MainOrder> orderList = new List<MainOrder>();
     public MainOrder activeOrder = null;
-
-    protected void Move(Vector3 destination)
-    {
-        orderList.Add(new MainOrder {moveOrder = new MoveOrder { destination = destination } });
-    }
+    protected NavMeshAgent navMeshAgent;
+    protected RaycastHit hitInfo = new RaycastHit();
 
     protected void Stop()
     {
@@ -85,4 +83,14 @@ public class Unit : Playable
     {
         
     }
+
+    public void Move()
+        {
+            anim.SetBool("isMoving", true);
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
+            {
+                navMeshAgent.destination = hitInfo.point;
+            }
+        }
 }

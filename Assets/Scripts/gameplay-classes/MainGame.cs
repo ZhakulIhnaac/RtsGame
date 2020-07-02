@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class MainGame : MonoBehaviour
 {
-    public List<Playable> selectedUnitsList;
+    public List<GameObject> selectedUnitsList;
     public Vector3 selectboxClickPos;
     public Vector3 selectboxReleasePos;
 
-    private void Awake()
-    {
-        selectedUnitsList = new List<Playable>();   
-    }
+    //private void Awake()
+    //{
+        
+    //}
 
     void Start()
     {
-
+        selectedUnitsList = new List<GameObject>();
     }
 
     void Update()
@@ -24,12 +24,14 @@ public class MainGame : MonoBehaviour
         {
             RaycastHit selectHitInfo = new RaycastHit();
             bool selectHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out selectHitInfo);
+            selectedUnitsList.Clear();
 
             if (selectHit)
             {
-                if (selectHitInfo.collider != null)
+                if (selectHitInfo.collider.GetComponent<Playable>() != null)
                 {
-                    selectboxClickPos = selectHitInfo.transform.position;
+                    selectedUnitsList.Add(selectHitInfo.collider.gameObject);
+                    Debug.Log(selectedUnitsList.Count);
                 }
             }
         }
@@ -56,21 +58,25 @@ public class MainGame : MonoBehaviour
                 Unit unit = item.GetComponent<Unit>();
                 if (unit != null)
                 {
-                    selectedUnitsList.Add(unit);
+                    selectedUnitsList.Add(item.gameObject);
                 }
             }
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit orderHitInfo = new RaycastHit();
-            var orderRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(orderRay, out orderHitInfo))
+            if (selectedUnitsList.Count > 0)
             {
-                if (orderHitInfo.collider != null)
+                if (selectedUnitsList[0].GetComponent<Unit>() != null) // If the unit class is selected.
                 {
-                    Debug.Log(orderHitInfo.point);
+                    foreach (var unit in selectedUnitsList)
+                    {
+                        unit.GetComponent<Unit>().Move();
+                    }
+                }
+                else
+                {
+                    // Set Flag for production buildings
                 }
             }
         }
