@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    private float cameraSpeed = 0f;
+    private float cameraSpeed;
     public float mouseMoveBorder = 10f;
+    //[SerializeField] Bazooka bazooka; // Added for development purposes. Mostly to check whether the colliders work. 
+    Vector3 camDistance = new Vector3(0,10,-10);
     void Start()
     {
         
@@ -13,6 +15,8 @@ public class MainCamera : MonoBehaviour
 
     void Update()
     {
+        //transform.position = bazooka.transform.position + camDistance;
+
         Vector3 pos = transform.position;
 
         //Shift key control
