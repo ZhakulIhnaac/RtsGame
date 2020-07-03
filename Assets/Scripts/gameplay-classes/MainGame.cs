@@ -31,7 +31,11 @@ public class MainGame : MonoBehaviour
                 if (selectHitInfo.collider.GetComponent<Playable>() != null)
                 {
                     selectedUnitsList.Add(selectHitInfo.collider.gameObject);
-                    Debug.Log(selectedUnitsList.Count);
+                }
+                else if (selectHitInfo.collider.GetComponent<ProductionBuilding>() != null)
+                {
+                    selectedUnitsList.Add(selectHitInfo.collider.gameObject);
+                    selectHitInfo.collider.GetComponent<ProductionBuilding>().Selected();
                 }
             }
         }

@@ -10,6 +10,18 @@ public class ProductionBuilding : Playable
     protected int productionLimit;
     protected Waypoint waypoint;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
     protected void AddProduction(Unit unit)
     {
         if (productionList.Count < productionLimit)
@@ -20,7 +32,7 @@ public class ProductionBuilding : Playable
 
     protected void SetWaypoint(Vector3 position)
     {
-
+        // TODO: On rightclick, a flag will be placed on the clicked position on the navMesh.
     }
 
     protected void CancelProduction()
@@ -36,18 +48,4 @@ public class ProductionBuilding : Playable
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (productionList.Count > 0)
-        {
-
-        }
-    }
 }
