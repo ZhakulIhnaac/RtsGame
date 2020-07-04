@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\NewFolder1\Enums.cs" />
     <Compile Include="Assets\Scripts\UI_Scripts\Button.cs" />
     <Compile Include="Assets\Scripts\environment-scripts\Crystal.cs" />
     <Compile Include="Assets\Scripts\gameplay-classes\Cursor.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\gameplay-classes\orders\MineOrder.cs" />
     <Compile Include="Assets\Scripts\gameplay-classes\orders\MoveOrder.cs" />
     <Compile Include="Assets\Scripts\gameplay-classes\orders\PatrolOrder.cs" />
+    <Compile Include="Assets\Scripts\gameplay-classes\upgrades\Upgrades.cs" />
     <Compile Include="Assets\Scripts\human-classes\building-classes\Barracks.cs" />
     <Compile Include="Assets\Scripts\human-classes\building-classes\CommandCenter.cs" />
     <Compile Include="Assets\Scripts\human-classes\building-classes\ProductionBuilding.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Assets\Scripts\human-classes\unit-classes\Bazooka.cs" />
     <Compile Include="Assets\Scripts\human-classes\unit-classes\Cruiser.cs" />
     <Compile Include="Assets\Scripts\human-classes\unit-classes\Fighter.cs" />
+    <Compile Include="Assets\Scripts\human-classes\unit-classes\IUnit.cs" />
     <Compile Include="Assets\Scripts\human-classes\unit-classes\Marine.cs" />
     <Compile Include="Assets\Scripts\human-classes\unit-classes\Medic.cs" />
     <Compile Include="Assets\Scripts\human-classes\unit-classes\Miner.cs" />

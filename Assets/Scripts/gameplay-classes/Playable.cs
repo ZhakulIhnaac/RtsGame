@@ -9,6 +9,7 @@ public class Playable : MonoBehaviour
     protected string definition;
     protected Player owner;
     public float health;
+    public float maxHealth;
     public float armor;
     protected int solarPowerRequirement;
     protected int crystalRequirement;
@@ -16,19 +17,7 @@ public class Playable : MonoBehaviour
     protected float sightRange;
     protected Animator anim;
     protected NavMeshAgent navMeshAgent;
-    [SerializeField] public Button button_1;
-    [SerializeField] public Button button_3;
-    [SerializeField] public Button button_2;
-    [SerializeField] public Button button_4;
-    [SerializeField] public Button button_5;
-    [SerializeField] public Button button_6;
-    [SerializeField] public Button button_7;
-    [SerializeField] public Button button_8;
-    [SerializeField] public Button button_9;
-    [SerializeField] public Button button_10;
-    [SerializeField] public Button button_11;
-    [SerializeField] public Button button_12;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +40,7 @@ public class Playable : MonoBehaviour
 
     public void Selected()
     {
-        Debug.Log("HElle");
+        // UI Implementation
+        Debug.Log("AA");
     }
 }

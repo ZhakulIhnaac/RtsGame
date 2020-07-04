@@ -8,10 +8,19 @@ public class MainGame : MonoBehaviour
     public Vector3 selectboxClickPos;
     public Vector3 selectboxReleasePos;
 
-    //private void Awake()
-    //{
-        
-    //}
+    // UI Implementations
+    public UnityEngine.UI.Button button_1;
+    public UnityEngine.UI.Button button_2;
+    public UnityEngine.UI.Button button_3;
+    public UnityEngine.UI.Button button_4;
+    public UnityEngine.UI.Button button_5;
+    public UnityEngine.UI.Button button_6;
+    public UnityEngine.UI.Button button_7;
+    public UnityEngine.UI.Button button_8;
+    public UnityEngine.UI.Button button_9;
+    public UnityEngine.UI.Button button_10;
+    public UnityEngine.UI.Button button_11;
+    public UnityEngine.UI.Button button_12;
 
     void Start()
     {
@@ -31,6 +40,7 @@ public class MainGame : MonoBehaviour
                 if (selectHitInfo.collider.GetComponent<Playable>() != null)
                 {
                     selectedUnitsList.Add(selectHitInfo.collider.gameObject);
+                    selectHitInfo.collider.GetComponent<Playable>().Selected();
                 }
                 else if (selectHitInfo.collider.GetComponent<ProductionBuilding>() != null)
                 {
@@ -59,8 +69,7 @@ public class MainGame : MonoBehaviour
 
             foreach (var item in selectedList)
             {
-                Unit unit = item.GetComponent<Unit>();
-                if (unit != null)
+                if (item.GetComponent<Unit>() != null)
                 {
                     selectedUnitsList.Add(item.gameObject);
                 }

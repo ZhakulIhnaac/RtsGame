@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attacker : Unit
 {
-    protected float hitPoint;
+    public float hitPoint;
     public Bullet bullet;
 
     protected void Attack(Playable playable)

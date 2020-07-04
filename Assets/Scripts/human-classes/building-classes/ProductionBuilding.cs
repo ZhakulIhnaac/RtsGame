@@ -43,7 +43,7 @@ public class ProductionBuilding : Playable
         }
     }
 
-    protected void Spawn()
+    protected void SpawnUnit()
     {
 
     }

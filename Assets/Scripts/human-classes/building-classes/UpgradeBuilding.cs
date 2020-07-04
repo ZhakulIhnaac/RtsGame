@@ -25,9 +25,9 @@ public class UpgradeBuilding : Playable
         }
     }
 
-    protected void Spawn()
+    protected void Upgrade()
     {
-
+        // TODO: Foreach unit
     }
 
     // Start is called before the first frame update
