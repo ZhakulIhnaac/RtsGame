@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Unit : Playable
 {
@@ -7,7 +8,7 @@ public class Unit : Playable
     
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -18,15 +19,13 @@ public class Unit : Playable
     protected void Stop()
     {
         navMeshAgent.isStopped = true;
+        anim.SetBool("isMoving", false);
     }
 
     public void Move()
     {
-        Debug.Log(anim);
         anim.SetBool("isMoving", true);
-        Debug.Log("A2");
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.Log("A3");
         if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
         {
             navMeshAgent.destination = hitInfo.point;

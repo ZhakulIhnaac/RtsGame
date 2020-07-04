@@ -17,6 +17,8 @@ public class Bazooka : Attacker
         crystalRequirement = 200;
         buildTime = 20;
         sightRange = 10.0f;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
 }

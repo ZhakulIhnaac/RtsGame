@@ -15,10 +15,7 @@ public class Transport : Unit
             unitsList.Add(unit);
             Destroy(unit);
         }
-        else
-        {
-            unit.orderList.Add(new MainOrder { moveOrder = { destination = this.transform.position } });
-        }
+        
     }
 
     public void Unload()
