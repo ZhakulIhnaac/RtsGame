@@ -1,23 +1,35 @@
-﻿using System.Collections;
+﻿using Enums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Miner : Unit
 {
     protected int carryAmount;
+    protected GameObject[] buildingOptions;
 
     protected void Mine(Crystal crystal)
     {
  
     }
 
-    // Start is called before the first frame update
+    protected void BuildOrder(GameObject building)
+    {
+        unitStatus = EUnitStatus.Moving;
+        navMeshAgent.destination = building.transform.position;
+    }
+
+    protected void StartBuilding()
+    {
+        unitStatus = EUnitStatus.InAction;
+
+    }
+
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 

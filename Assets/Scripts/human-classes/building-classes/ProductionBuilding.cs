@@ -1,32 +1,39 @@
-﻿using System.Collections;
+﻿using Enums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProductionBuilding : Playable
 {
-
-    [SerializeField] protected List<Unit> productables;
-    protected List<Unit> productionList;
+    public List<GameObject> produceables;
+    protected List<GameObject> productionList;
+    protected GameObject currentProduction;
     protected int productionLimit;
     protected Waypoint waypoint;
+    protected bool isProducing;
+    protected int productionTimePassed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    protected void AddProduction(Unit unit)
+    public void AddProduction(GameObject unit)
     {
         if (productionList.Count < productionLimit)
         {
-            productionList.Add(unit);
+            Debug.Log("isProducing: " + isProducing);
+            Debug.Log("AddedToProduction");
+            if (unit.GetComponent<Unit>().populationCost + /*unit.GetComponent<Playable>().owner.populationCount*/ 4 <= GameObject.Find("MainGame").GetComponent<MainGame>().populationLimit)
+            {
+                productionList.Add(unit);
+                Debug.Log("ProductionList: " + productionList);
+                isProducing = !isProducing;
+                StartProduction();
+            }
+            else
+            {
+                // TODO: GiveWarning(string warning) adında, ekrana warning veren bir metot oluştur ve içerisine popülasyon uyarısı gönder.;
+            }
+        }
+        else
+        {
+            // TODO: GiveWarning(string warning) adında, ekrana warning veren bir metot oluştur ve içerisine popülasyon uyarısı gönder.;
         }
     }
 
@@ -43,9 +50,37 @@ public class ProductionBuilding : Playable
         }
     }
 
-    protected void SpawnUnit()
+    protected void StartProduction()
     {
+        currentProduction = productionList[0];
+        Debug.Log("CurrentProduction: " + currentProduction);
+        StartCoroutine(SpawnUnit());
+    }
 
+    protected void FinishProduction()
+    {
+        productionList.RemoveAt(0);
+        Debug.Log("ProductionListAfterRemove: " + productionList);
+
+        if (productionList.Count > 0)
+        {
+            StartProduction();
+        }
+        else
+        {
+            isProducing = !isProducing;
+            Debug.Log("isProducing: " + isProducing);
+        }
+    }
+
+    IEnumerator SpawnUnit()
+    {
+        Debug.Log("ProductionBeginning: " + Time.time);
+        yield return new WaitForSeconds(currentProduction.GetComponent<Playable>().buildTime);
+        Debug.Log("ProductionEnd: " + Time.time);
+        Instantiate(currentProduction, transform.position + new Vector3(10,0,-10), Quaternion.identity);
+        Debug.Log("Instantiated");
+        FinishProduction();
     }
 
 }

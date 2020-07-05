@@ -1,21 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Enums;
 using UnityEngine;
 
 public class Attacker : Unit
 {
+    public GameObject bullet;
+    public GameObject target;
+    public float attackingRange;
     public float hitPoint;
-    public Bullet bullet;
 
-    protected void Attack(Playable playable)
+    protected void Attack(GameObject enemy)
     {
-
+        unitStatus = EUnitStatus.InAction;
+        target = enemy;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void ShootToKill(GameObject enemy)
     {
-
+        GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        newBullet.GetComponent<Bullet>().FlyForward(transform.forward);
     }
 
 }

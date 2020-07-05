@@ -1,24 +1,59 @@
-﻿using UnityEngine;
+﻿using Enums;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class Bazooka : Attacker
 {
-    
-    // Start is called before the first frame update
+
     void Start()
     {
-        hitPoint = 20.0f;
-        populationCost = 2;
-        playableName = "Bazooka Trooper";
-        definition = "Hit a trooper, It goes BOOM! Hit a vehicle, it goes BOOM! Everything will go BOOM someday anyway...";
-        health = 50.0f;
-        armor = 5.0f;
-        solarPowerRequirement = 200;
-        crystalRequirement = 200;
-        buildTime = 20;
-        sightRange = 10.0f;
-        navMeshAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        armor = 10.0f;
+        attackingRange = 5f;
+        buildTime = 20;
+        crystalRequirement = 200;
+        definition = "Bazooka Trooper is specialized with sending the target to the eternity, piece by piece.";
+        health = 200.0f;
+        hitPoint = 20f;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        playableName = "Bazooka Trooper";
+        populationCost = 2;
+        sightRange = 10.0f;
+        solarPowerRequirement = 200;
+        unitStatus = EUnitStatus.Idle;
+    }
+
+    void Update()
+    {
+        switch (unitStatus)
+        {
+            case EUnitStatus.Idle:
+                break;
+            case EUnitStatus.Holding:
+                break;
+            case EUnitStatus.Patrolling:
+                break;
+            case EUnitStatus.InAction:
+                if ((target.transform.position - transform.position).magnitude > attackingRange)
+                {
+                    navMeshAgent.destination = target.transform.position;
+                }
+                else
+                {
+                    anim.SetBool("isMoving", false);
+                    anim.SetBool("isInAction", true);
+                    ShootToKill(target);
+                }
+                break;
+            case EUnitStatus.Moving:
+                if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
+                {
+                    Stop();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
 }

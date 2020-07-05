@@ -7,28 +7,16 @@ public class Playable : MonoBehaviour
 {
     protected string playableName;
     protected string definition;
-    protected Player owner;
+    public Player owner;
     public float health;
     public float maxHealth;
     public float armor;
     protected int solarPowerRequirement;
     protected int crystalRequirement;
-    protected int buildTime;
+    public int buildTime; // In seconds
     protected float sightRange;
     protected Animator anim;
     protected NavMeshAgent navMeshAgent;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public IEnumerator unitDestroyed()
     {
