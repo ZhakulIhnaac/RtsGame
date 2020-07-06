@@ -11,8 +11,8 @@ public class Button : MonoBehaviour
 
     public void Clicked()
     {
-        var a = mainGameObject.GetComponent<MainGame>().selectedPlayableList[0];
-        a.GetComponent<ProductionBuilding>().AddProduction(a.GetComponent<Barracks>().produceables[0]);
+        var selectedPlayable = mainGameObject.GetComponent<MainGame>().selectedPlayableList[0];
+        selectedPlayable.GetComponent<ProductionBuilding>().AddProduction(selectedPlayable.GetComponent<Barracks>().produceables[0]);
     }
 
     public void Refresh()

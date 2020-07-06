@@ -618,10 +618,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.1162586
+  m_Radius: 0.38377
+  m_Height: 1.6978073
   m_Direction: 1
-  m_Center: {x: 0, y: 0.946393, z: 0}
+  m_Center: {x: -0.016342163, y: 0.83449364, z: 0.04948044}
 --- !u!114 &336186670281757719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,9 +634,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8726d175aad0e4cac844a1f5507ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  owner: {fileID: 0}
+  health: 0
+  maxHealth: 0
+  armor: 0
+  buildTime: 0
   populationCost: 0
   bullet: {fileID: 0}
+  target: {fileID: 0}
+  attackingRange: 0
+  hitPoint: 0
 --- !u!195 &336186670281757712
 NavMeshAgent:
   m_ObjectHideFlags: 0
