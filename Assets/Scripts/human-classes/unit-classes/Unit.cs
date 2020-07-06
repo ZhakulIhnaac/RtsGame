@@ -13,7 +13,6 @@ public class Unit : Playable, IUnit
     public void Stop()
     {
         unitStatus = EUnitStatus.Idle;
-        navMeshAgent.isStopped = true;
         anim.SetBool("isMoving", false);
     }
 

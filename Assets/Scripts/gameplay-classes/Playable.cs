@@ -29,6 +29,5 @@ public class Playable : MonoBehaviour
     public void Selected()
     {
         // UI Implementation
-        Debug.Log("AA");
     }
 }

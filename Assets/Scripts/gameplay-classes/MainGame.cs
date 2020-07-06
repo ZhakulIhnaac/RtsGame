@@ -29,7 +29,7 @@ public class MainGame : MonoBehaviour
         populationLimit = 200;
     }
 
-    void Update() // TODO: Burası temizlenerek raycast vb işler objelerin metotlarının içine alınacak.
+    void Update() 
     {
         
     }

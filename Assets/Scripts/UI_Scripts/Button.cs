@@ -12,13 +12,11 @@ public class Button : MonoBehaviour
     public void Clicked()
     {
         var a = mainGameObject.GetComponent<MainGame>().selectedPlayableList[0];
-        Debug.Log(a);
         a.GetComponent<ProductionBuilding>().AddProduction(a.GetComponent<Barracks>().produceables[0]);
     }
 
     public void Refresh()
     {
-        var c = mainGameObject.GetComponent<MainGame>().selectedPlayableList.Count;
-        Debug.Log(c);
+        //var c = mainGameObject.GetComponent<MainGame>().selectedPlayableList.Count;
     }
 }

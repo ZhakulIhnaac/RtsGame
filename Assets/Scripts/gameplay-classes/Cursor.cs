@@ -18,6 +18,7 @@ public class Cursor : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             mainGameObject.GetComponent<MainGame>().selectedPlayableList.Clear();
+
             RaycastHit selectHitInfo = new RaycastHit();
             bool selectHit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out selectHitInfo);
 
@@ -34,8 +35,8 @@ public class Cursor : MonoBehaviour
                     {
                         mainGameObject.GetComponent<MainGame>().selectedPlayableList.Add(selectHitInfo.collider.gameObject);
                         selectHitInfo.collider.GetComponent<ProductionBuilding>().Selected();
+                        GameObject.Find("Button_1").GetComponent<Button>().Clicked();
                     }
-                    GameObject.Find("Button_1").GetComponent<Button>().Clicked();
                 }
             }
         }
