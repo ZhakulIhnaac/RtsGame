@@ -61,11 +61,11 @@ public class MainCamera : MonoBehaviour
             // Speeding up the camera speed with right shift key
             if (Input.GetKey(KeyCode.RightShift)) // TODO: Camera speeds has been given the zero values, change them when tests completed.
             {
-                cameraSpeed = 30f;
+                cameraSpeed = 0f;
             }
             else
             {
-                cameraSpeed = 20f;
+                cameraSpeed = 0f;
             }
             
         }
