@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI_Scripts\Button.cs" />
+    <Compile Include="Assets\Scripts\UI_Scripts\FocusCamera.cs" />
     <Compile Include="Assets\Scripts\enums\Enums.cs" />
     <Compile Include="Assets\Scripts\environment-scripts\Crystal.cs" />
     <Compile Include="Assets\Scripts\environment-scripts\Menu\GameMenu.cs" />

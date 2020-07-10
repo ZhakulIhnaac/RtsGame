@@ -6,13 +6,14 @@ public class Cursor : MonoBehaviour
 {
 
     GameObject mainGameObject;
-    // Start is called before the first frame update
+    GameObject focusCamera;
+
     void Start()
     {
         mainGameObject = GameObject.Find("MainGame");
+        focusCamera = GameObject.Find("FocusCamera");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -37,6 +38,8 @@ public class Cursor : MonoBehaviour
                         selectHitInfo.collider.GetComponent<ProductionBuilding>().Selected();
                         GameObject.Find("Button_1").GetComponent<Button>().Clicked();
                     }
+
+                    mainGameObject.GetComponent<MainGame>().selectedPlayable = selectHitInfo.collider.gameObject;
                 }
             }
         }
@@ -83,6 +86,17 @@ public class Cursor : MonoBehaviour
                     // Set Flag for production buildings
                 }
             }
+        }
+
+        if (mainGameObject.GetComponent<MainGame>().selectedPlayable != null) // Optimize edilecek, bu kadar fazla çağırma yapma hoj değil.
+        {
+            focusCamera.transform.LookAt(mainGameObject.GetComponent<MainGame>().selectedPlayable.transform);
+            focusCamera.transform.position = mainGameObject.GetComponent<MainGame>().selectedPlayable.transform.position + new Vector3(0, mainGameObject.GetComponent<MainGame>().selectedPlayable.transform.lossyScale.y * 2, 0) + mainGameObject.GetComponent<MainGame>().selectedPlayable.transform.forward;
+        }
+        else
+        {
+            focusCamera.transform.position = focusCamera.GetComponent<FocusCamera>().initialPosition;
+            focusCamera.transform.rotation = focusCamera.GetComponent<FocusCamera>().initialRotation;
         }
     }
 }

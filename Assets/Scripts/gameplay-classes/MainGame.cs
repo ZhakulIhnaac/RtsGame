@@ -8,6 +8,7 @@ public class MainGame : MonoBehaviour
     public Vector3 selectboxReleasePos;
     public GameObject buildingToPlace;
     public int populationLimit;
+    public GameObject selectedPlayable;
 
     // UI Implementations
     public UnityEngine.UI.Button button_1;
